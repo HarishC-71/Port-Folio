@@ -1,0 +1,85 @@
+Build a full-stack AI-powered campus placement platform with a strong focus on a clean, intuitive, and user-friendly interface.
+
+The platform should provide a seamless experience for both students and recruiters, ensuring easy navigation, minimal complexity, and clear visual feedback at every step.
+
+Core Objectives:
+
+* Simple and intuitive UI/UX
+* Fast and smooth user interactions
+* Clear dashboards for students and recruiters
+* Automated and transparent candidate evaluation system
+
+Key Features:
+
+1. User-Friendly Authentication:
+
+* Simple signup/login with minimal steps
+* Clear error messages and validations
+* Role-based dashboards (Student / Recruiter)
+
+2. Student Dashboard (Clean & Interactive):
+
+* Easy profile creation with guided steps
+* Resume upload with preview option
+* Add links like GitHub, LeetCode, and portfolio
+* One-click job application system
+* Track application status with visual indicators
+
+3. Recruiter Dashboard (Efficient & Minimal):
+
+* Simple job posting form with clear fields
+* View applicants in a clean, organized list
+* Filter candidates easily (skills, score, etc.)
+* Highlight top candidates visually
+* One-click shortlist/reject actions
+
+4. Smart Resume Analysis (AI Module):
+
+* Automatically extract skills and details from resumes
+* Display extracted data in a readable format
+* Match candidate skills with job requirements
+
+5. GitHub Integration:
+
+* Fetch and display GitHub data in a simple visual format
+* Show project activity, languages, and contributions clearly
+
+6. Coding Profile Evaluation:
+
+* Analyze LeetCode profile
+* Present coding stats using simple charts or progress indicators
+
+7. Transparent Scoring System:
+
+* Show how scores are calculated (no hidden logic)
+* Display score breakdown using graphs or progress bars
+
+8. Candidate Ranking:
+
+* Show ranked list with clean UI
+* Highlight top performers with badges or colors
+
+9. Notifications & Feedback:
+
+* Real-time updates for applications
+* Clear success/error messages
+* Optional email notifications
+
+10. Backend Requirements:
+
+* REST API using Node.js and Express
+* Secure authentication using JWT
+* Data stored in MongoDB
+
+11. AI Service:
+
+* Python FastAPI for resume analysis
+* NLP for extracting and matching skills
+
+12. Frontend:
+
+* Build using React with a focus on responsive design
+* Use modern UI libraries for better user experience
+
+Goal:
+Create a modern, user-friendly hiring platform that simplifies the recruitment process while using AI to fairly and efficiently evaluate candidates.
