@@ -214,4 +214,77 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
+    /* --- Advanced Project Slider --- */
+    const slidesContainer = document.querySelector('.slides');
+    const slideCards = document.querySelectorAll('.slide-card');
+    const nextBtn = document.querySelector('.slider-btn.next');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const dotsContainer = document.querySelector('.slider-dots');
+    
+    let currentSlide = 0;
+    let autoSlideInterval;
+
+    // Create dots
+    slideCards.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateSlider() {
+        const cardWidth = slideCards[0].offsetWidth + 30; // width + gap
+        slidesContainer.style.transform = `translateX(${-currentSlide * cardWidth}px)`;
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        const maxSlides = getMaxSlides();
+        
+        if (currentSlide < 0) currentSlide = maxSlides;
+        if (currentSlide > maxSlides) currentSlide = 0;
+        
+        updateSlider();
+        resetAutoSlide();
+    }
+
+    function getMaxSlides() {
+        // Calculate based on how many cards are visible
+        const visibleCards = window.innerWidth > 1024 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+        return Math.max(0, slideCards.length - visibleCards);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        goToSlide(currentSlide + 1);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        goToSlide(currentSlide - 1);
+    });
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    window.addEventListener('resize', updateSlider);
+    
+    // Initialize
+    updateSlider();
+    startAutoSlide();
 });
