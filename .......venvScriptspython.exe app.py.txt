@@ -1,1 +1,5 @@
-..\..\..\.venv\Scripts\python.exe app.py
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+. ..\..\..\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python run_init.py
+python app.py

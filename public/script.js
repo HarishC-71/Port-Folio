@@ -194,7 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (response.ok) {
-                    alert(result.message || 'Message sent successfully! It has been sent to my mail id.');
+                    if (result.emailSent === false) {
+                        // Excel saved but email failed — show a distinct warning
+                        alert('⚠️ ' + (result.message || 'Your message was saved, but the email notification could not be sent. The owner will check records manually.'));
+                    } else {
+                        alert('✅ ' + (result.message || 'Message sent successfully!'));
+                    }
                     contactForm.reset();
                 } else {
                     alert(result.error || 'Failed to send message.');

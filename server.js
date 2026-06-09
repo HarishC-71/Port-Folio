@@ -24,24 +24,39 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLIC_PATH));
 
-// Email transporter (SECURE - Updated for better compatibility)
+// Debug: confirm .env values are loaded correctly
+console.log("📧 EMAIL_USER loaded:", process.env.EMAIL_USER ? process.env.EMAIL_USER : "⚠️ NOT SET");
+console.log("🔑 EMAIL_PASS loaded:", process.env.EMAIL_PASS ? `**** (length: ${process.env.EMAIL_PASS.length})` : "⚠️ NOT SET");
+
+// Email transporter using port 587 + STARTTLS (most reliable for Gmail App Passwords)
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,       // false = STARTTLS upgrade (required for port 587)
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false  // allow self-signed certs on corporate/home networks
     }
 });
 
-// Verify transporter
+// Verify transporter on startup
 transporter.verify((err, success) => {
     if (err) {
-        console.error("Email configuration error:", err);
-        console.log("TIP: Ensure you have 2-Step Verification ON and are using a 16-character App Password.");
+        console.error("\n❌ Email configuration FAILED:", err.message);
+        console.error("   Code   :", err.code);
+        console.error("   Response:", err.response || 'N/A');
+        console.log("\n   ─── HOW TO FIX ───────────────────────────────────────────────");
+        console.log("   1. Go to: https://myaccount.google.com/security");
+        console.log("   2. Enable '2-Step Verification' if not already ON");
+        console.log("   3. Go to: https://myaccount.google.com/apppasswords");
+        console.log("   4. Create App Password → Select app: Mail, device: Windows");
+        console.log("   5. Copy the 16-char password (no spaces) → paste into .env as EMAIL_PASS");
+        console.log("   6. Restart the server\n");
     } else {
-        console.log("Email server is ready to send messages!");
+        console.log("✅ Email server is ready — connected to smtp.gmail.com:587");
     }
 });
 
@@ -123,25 +138,28 @@ app.post('/api/contact', async (req, res) => {
         };
 
         try {
-            await new Promise((resolve, reject) => {
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) reject(error);
-                    else resolve(info);
-                });
-            });
-            console.log('Email sent successfully');
+            const info = await transporter.sendMail(mailOptions);
+            console.log('✅ Email sent successfully. MessageId:', info.messageId);
         } catch (emailError) {
-            console.error("Email failed but data was saved:", emailError.message);
-            // We still return 200 because the data is saved to Excel
+            // Log full error details for debugging
+            console.error("\n❌ Email sending FAILED (data WAS saved to Excel):");
+            console.error("   Message:", emailError.message);
+            console.error("   Code:", emailError.code);
+            console.error("   Response:", emailError.response || 'N/A');
+            console.log("   ➡ Fix: Regenerate your Gmail App Password at https://myaccount.google.com/apppasswords\n");
+
+            // Return 200 because Excel record was saved, but flag the email failure
             return res.status(200).json({
                 success: true,
-                message: 'Recorded in Excel, but email notification failed. I will check records manually!'
+                emailSent: false,
+                message: 'Your message was saved! (Email notification could not be sent — the owner will check records manually.)'
             });
         }
 
         res.status(200).json({
             success: true,
-            message: 'Message sent successfully and saved to records!'
+            emailSent: true,
+            message: 'Message sent successfully! You will receive a confirmation shortly.'
         });
 
     } catch (error) {
