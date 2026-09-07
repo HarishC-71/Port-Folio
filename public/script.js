@@ -243,7 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateSlider() {
         const cardWidth = slideCards[0].offsetWidth + 30; // width + gap
-        slidesContainer.style.transform = `translateX(${-currentSlide * cardWidth}px)`;
+        const maxSlides = getMaxSlides();
+        const visualSlide = Math.min(currentSlide, maxSlides);
+        slidesContainer.style.transform = `translateX(${-visualSlide * cardWidth}px)`;
         
         // Update dots
         dots.forEach((dot, i) => {
@@ -253,10 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function goToSlide(index) {
         currentSlide = index;
-        const maxSlides = getMaxSlides();
+        const maxIndex = slideCards.length - 1;
         
-        if (currentSlide < 0) currentSlide = maxSlides;
-        if (currentSlide > maxSlides) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = maxIndex;
+        if (currentSlide > maxIndex) currentSlide = 0;
         
         updateSlider();
         resetAutoSlide();
