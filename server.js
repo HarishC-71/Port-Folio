@@ -68,27 +68,36 @@ async function saveToExcel(data) {
     let worksheet;
 
     try {
-        if (fs.existsSync(EXCEL_FILE_PATH)) {
+        const isNewFile = !fs.existsSync(EXCEL_FILE_PATH);
+
+        if (!isNewFile) {
             await workbook.xlsx.readFile(EXCEL_FILE_PATH);
             worksheet = workbook.getWorksheet('Messages');
         }
-        
+
         if (!worksheet) {
             worksheet = workbook.addWorksheet('Messages');
         }
 
-        // Always define columns to ensure key mapping works correctly
-        worksheet.columns = [
-            { header: 'Name', key: 'name', width: 25 },
-            { header: 'Email', key: 'email', width: 25 },
-            { header: 'Subject', key: 'subject', width: 30 },
-            { header: 'Message', key: 'message', width: 50 },
-            { header: 'Date', key: 'date', width: 25 }
-        ];
-
-        // Format header if it's a new sheet
-        if (worksheet.rowCount <= 1) {
+        // Only define columns (header row) on a brand-new worksheet
+        if (isNewFile || worksheet.rowCount === 0) {
+            worksheet.columns = [
+                { header: 'Name', key: 'name', width: 25 },
+                { header: 'Email', key: 'email', width: 25 },
+                { header: 'Subject', key: 'subject', width: 30 },
+                { header: 'Message', key: 'message', width: 50 },
+                { header: 'Date', key: 'date', width: 25 }
+            ];
             worksheet.getRow(1).font = { bold: true };
+        } else {
+            // Re-apply key mapping without overwriting the stored header row
+            worksheet.columns = [
+                { key: 'name', width: 25 },
+                { key: 'email', width: 25 },
+                { key: 'subject', width: 30 },
+                { key: 'message', width: 50 },
+                { key: 'date', width: 25 }
+            ];
         }
 
         worksheet.addRow({
@@ -121,7 +130,7 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     if (!name || !email || !message) {
-        return res.status(400).json({ error: 'All required fields (name, email, message) are missing' });
+        return res.status(400).json({ error: 'Required fields (name, email, message) must not be empty' });
     }
 
     try {
