@@ -1,3 +1,4 @@
+/* ========= DARK MODE (default) ========= */
 :root {
     --bg-color: #0d1117;
     --surface-color: #161b22;
@@ -9,7 +10,124 @@
     --glass-bg: rgba(22, 27, 34, 0.7);
     --glass-border: rgba(255, 255, 255, 0.08);
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --theme-transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    --scrolled-bg: rgba(13, 17, 23, 0.92);
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --input-focus-bg: rgba(0, 0, 0, 0.4);
+    --card-overlay-gradient: linear-gradient(to top, rgba(13, 17, 23, 0.85), transparent);
+    --name-gradient: linear-gradient(to right, #fff, var(--text-muted));
+    --orb1: rgba(56, 189, 248, 0.15);
+    --orb2: rgba(129, 140, 248, 0.10);
+    --projects-radial: rgba(56, 189, 248, 0.05);
+    --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
+
+/* ========= LIGHT MODE ========= */
+:root.light-mode {
+    --bg-color: #f4f6fb;
+    --surface-color: #ffffff;
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --text-main: #1a1f36;
+    --text-muted: #52607a;
+    --accent: #7c3aed;
+    --glass-bg: rgba(255, 255, 255, 0.80);
+    --glass-border: rgba(37, 99, 235, 0.12);
+    --scrolled-bg: rgba(244, 246, 251, 0.95);
+    --input-bg: rgba(37, 99, 235, 0.04);
+    --input-focus-bg: rgba(37, 99, 235, 0.08);
+    --card-overlay-gradient: linear-gradient(to top, rgba(244, 246, 251, 0.9), transparent);
+    --name-gradient: linear-gradient(to right, #1a1f36, #52607a);
+    --orb1: rgba(37, 99, 235, 0.10);
+    --orb2: rgba(124, 58, 237, 0.07);
+    --projects-radial: rgba(37, 99, 235, 0.04);
+    --shadow-main: 0 10px 30px rgba(37, 99, 235, 0.12);
+    --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.15);
+}
+
+/* ========= THEME TOGGLE SWITCH ========= */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.theme-toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 56px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.theme-toggle-label input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.theme-toggle-track {
+    position: absolute;
+    inset: 0;
+    border-radius: 34px;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    border: 1.5px solid rgba(56, 189, 248, 0.3);
+    transition: background 0.4s ease, border-color 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.theme-toggle-label input:checked ~ .theme-toggle-track {
+    background: linear-gradient(135deg, #dbeafe, #ede9fe);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.theme-toggle-thumb {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.5);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.theme-toggle-label input:checked ~ .theme-toggle-thumb {
+    transform: translateX(28px);
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.5);
+}
+
+/* Emoji icons inside thumb */
+.theme-icon-dark,
+.theme-icon-light {
+    position: absolute;
+    font-size: 12px;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.theme-icon-dark  { opacity: 1; }
+.theme-icon-light { opacity: 0; }
+
+.theme-toggle-label input:checked ~ .theme-toggle-thumb .theme-icon-dark  { opacity: 0; }
+.theme-toggle-label input:checked ~ .theme-toggle-thumb .theme-icon-light { opacity: 1; }
 
 * {
     margin: 0;
@@ -28,6 +146,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Background Gradients */
@@ -39,9 +158,10 @@ body::before {
     width: 50vw;
     height: 50vw;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--orb1) 0%, transparent 70%);
     z-index: -1;
     pointer-events: none;
+    transition: background 0.4s ease;
 }
 
 body::after {
@@ -52,9 +172,10 @@ body::after {
     width: 60vw;
     height: 60vw;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--orb2) 0%, transparent 70%);
     z-index: -1;
     pointer-events: none;
+    transition: background 0.4s ease;
 }
 
 /* Header & Nav */
@@ -77,7 +198,7 @@ body::after {
 
 .header.scrolled {
     padding: 15px 8%;
-    background: rgba(13, 17, 23, 0.9);
+    background: var(--scrolled-bg);
 }
 
 .logo {
@@ -233,7 +354,7 @@ section {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 15px;
-    background: linear-gradient(to right, #fff, var(--text-muted));
+    background: var(--name-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -301,7 +422,7 @@ section {
     height: 400px;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-main);
     border: 3px solid rgba(56, 189, 248, 0.3);
     animation: morph 8s ease-in-out infinite;
     background: transparent;
@@ -345,7 +466,7 @@ section {
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-main);
     margin: auto;
 }
 
@@ -527,7 +648,7 @@ input,
 textarea {
     width: 100%;
     padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--input-bg);
     border: 1px solid var(--glass-border);
     border-radius: 10px;
     color: var(--text-main);
@@ -539,7 +660,7 @@ textarea {
 input:focus,
 textarea:focus {
     border-color: var(--primary-color);
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--input-focus-bg);
 }
 
 .submit-btn {
@@ -752,7 +873,7 @@ footer {
 }
 /* Projects Section & Slider */
 .projects {
-    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle at center, var(--projects-radial) 0%, transparent 70%);
 }
 
 .slider-container {
@@ -791,7 +912,7 @@ footer {
 .slide-card:hover {
     transform: translateY(-10px) scale(1.02);
     border-color: var(--primary-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-hover);
 }
 
 .card-img {
@@ -814,7 +935,7 @@ footer {
 .card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(13, 17, 23, 0.8), transparent);
+    background: var(--card-overlay-gradient);
     display: flex;
     align-items: flex-end;
     padding: 20px;
@@ -949,5 +1070,89 @@ footer {
     }
     .slider-btn {
         display: none;
+    }
+}
+
+/* ========= GLOBAL THEME TRANSITION ========= */
+/* Apply smooth transitions to all key elements on theme switch */
+.header,
+.skill-card,
+.slide-card,
+.contact-container,
+footer,
+.social-icons a,
+.btn,
+input,
+textarea,
+.slider-btn,
+.dot,
+.info-item i,
+.card-icon,
+.accent-line,
+.scroll-progress-bar {
+    transition: background-color 0.4s ease, color 0.4s ease,
+                border-color 0.4s ease, box-shadow 0.4s ease,
+                background 0.4s ease, var(--transition);
+}
+
+/* Placeholder color in both modes */
+::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ========= LIGHT MODE ENHANCEMENTS ========= */
+
+/* Skill card hover shadow in light mode */
+:root.light-mode .skill-card:hover {
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.25);
+}
+
+/* Primary button shadow in light mode */
+:root.light-mode .primary-btn {
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+:root.light-mode .primary-btn:hover {
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+}
+
+/* Secondary button in light mode */
+:root.light-mode .secondary-btn {
+    border-color: rgba(37, 99, 235, 0.25);
+}
+
+/* Social icons hover in light mode */
+:root.light-mode .social-icons a:hover {
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.35);
+}
+
+/* Slider button hover glow in light mode */
+:root.light-mode .slider-btn:hover {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+/* About image border accent in light mode */
+:root.light-mode .image-wrapper-alt::before {
+    border-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* Toggle responsive: hide label on very small screens */
+@media (max-width: 360px) {
+    .theme-toggle {
+        margin-left: 8px;
+    }
+    .theme-toggle-label {
+        width: 48px;
+        height: 24px;
+    }
+    .theme-toggle-thumb {
+        width: 18px;
+        height: 18px;
+    }
+    .theme-toggle-label input:checked ~ .theme-toggle-thumb {
+        transform: translateX(24px);
     }
 }

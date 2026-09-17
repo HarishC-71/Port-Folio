@@ -1,5 +1,32 @@
 // Scroll reveal animation and active navigation highlight
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* ========= THEME TOGGLE (Light / Dark Mode) ========= */
+    const themeInput = document.getElementById('themeToggleInput');
+    const root = document.documentElement;
+
+    // Apply saved theme (default = light mode)
+    const savedTheme = localStorage.getItem('portfolioTheme') || 'light';
+    if (savedTheme === 'light') {
+        root.classList.add('light-mode');
+        themeInput.checked = true;
+    } else {
+        root.classList.remove('light-mode');
+        themeInput.checked = false;
+    }
+
+    themeInput.addEventListener('change', () => {
+        if (themeInput.checked) {
+            root.classList.add('light-mode');
+            localStorage.setItem('portfolioTheme', 'light');
+        } else {
+            root.classList.remove('light-mode');
+            localStorage.setItem('portfolioTheme', 'dark');
+        }
+    });
+
+    /* ======================================================= */
+
     // Header styling on scroll
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
