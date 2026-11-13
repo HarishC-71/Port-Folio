@@ -1,327 +1,653 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harishraj - Portfolio</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="alternate icon" type="image/png" href="favicon.png">
-    <meta name="description" content="Harishraj - AI and Data Science Student Portfolio">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div id="scroll-progress" class="scroll-progress-bar"></div>
-    <div class="cursor-dot" data-cursor-dot></div>
-    <div class="cursor-outline" data-cursor-outline></div>
-
-    <header class="header">
-        <a href="#home" class="logo">H<span>.</span></a>
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="theme-toggle" title="Toggle Light / Dark Mode">
-            <label class="theme-toggle-label" aria-label="Toggle light/dark mode">
-                <input type="checkbox" id="themeToggleInput">
-                <div class="theme-toggle-track"></div>
-                <div class="theme-toggle-thumb">
-                    <span class="theme-icon-dark">🌙</span>
-                    <span class="theme-icon-light">☀️</span>
-                </div>
-            </label>
-        </div>
-        <div class="menu-toggle"><i class='bx bx-menu'></i></div>
-    </header>
-
-    <main>
-        <section class="home" id="home">
-            <div class="home-content">
-                <span class="greeting">Hello, I'm</span>
-                <h1 class="name">Harishraj</h1>
-                <h2 class="role"><span class="typed-text"></span><span class="cursor-blink">&nbsp;</span></h2>
-                <p class="description">
-                    Passionate about Artificial Intelligence, Machine Learning, and innovative development.
-                    I enjoy learning new technologies and building real-world projects that make an impact.
-                </p>
-                <div class="social-icons">
-                    <a href="https://leetcode.com/u/HARISHRAJ_C/" aria-label="LeetCode" title="LeetCode" target="_blank" rel="noopener noreferrer"><i
-                            class='bx bx-code-alt'></i></a>
-                    <a href="https://www.linkedin.com/in/harishraj-c-202b69338/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i
-                            class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/HarishC-71" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer"><i
-                            class='bx bxl-github'></i></a>
-                    <a href="https://www.salesforce.com/trailblazer/srq9q2l04p5mxcis7q" aria-label="Salesforce" title="Salesforce" target="_blank" rel="noopener noreferrer"><i
-                         class="bx bx-cloud" ></i></a>
-                </div>
-                <div class="cta-group">
-                    <a href="Harishraj_C_Resume.pdf" class="btn primary-btn" target="_blank" rel="noopener noreferrer" download="Harishraj_C_Resume.pdf">Download Resume</a>
-                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
-                </div>
-            </div>
-            <div class="home-image">
-                <div class="image-wrapper">
-                    <picture>
-                        <source srcset="images/my.webp" type="image/webp">
-                        <img src="images/my.png" alt="Harishraj Profile Picture" fetchpriority="high" decoding="async">
-                    </picture>
-                </div>
-            </div>
-        </section>
-
-        <section class="about" id="about">
-            <div class="section-header">
-                <h2>About <span>Me</span></h2>
-                <div class="accent-line"></div>
-            </div>
-            <div class="about-container">
-                <div class="about-image">
-                    <div class="image-wrapper-alt">
-                        <picture>
-                            <source srcset="images/my.webp" type="image/webp">
-                            <img src="images/my.png" alt="Harishraj Profile Picture" loading="lazy" decoding="async">
-                        </picture>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h3>Exploring data, creating intelligence.</h3>
-                    <p>I’m Harishraj, an AI and Data Science student with a strong interest in machine learning, data
-                        analysis, and building impactful real-world projects. I naturally gravitate towards exploring
-                        new technologies, solving complex problems, and continuously refining my skill set.</p>
-                    <p>I thrive on learning new concepts and turning experimental ideas into practical applications.
-                        Whether it’s analyzing intricate data patterns, training predictive models, or developing
-                        intuitive software, I bring passion and curiosity to everything I build.</p>
-                    <p>My ultimate goal is to evolve into a proficient AI engineer capable of architecting smart,
-                        efficient solutions that drive meaningful change.</p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <h4>4+</h4>
-                            <p>Mini Projects</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>6+</h4>
-                            <p>Tech Skills</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>3+</h4>
-                            <p>Main Projects</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="skills" id="skills">
-            <div class="section-header">
-                <h2>Technical <span>Skills</span></h2>
-                <div class="accent-line"></div>
-            </div>
-            <div class="skills-container">
-                <div class="skill-card">
-                    <div class="card-icon"><i class='bx bx-code-alt'></i></div>
-                    <h3>Languages</h3>
-                    <ul class="skill-list">
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>C,C++</li>
-                        <li>JavaScript</li>
-                        <li>MERN STACK</li>
-                        <li>DSA(JAVA)</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="card-icon"><i class='bx bx-message-square-dots'></i></div>
-                    <h3>Soft Skills</h3>
-                    <ul class="skill-list">
-                        <li>Communication</li>
-                        <li>Teamwork</li>
-                        <li>Leadership</li>
-                        <li>Problem Solving</li>
-                        <li>Logical Thinking</li>
-                        <li>Prompt Engineering</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="card-icon"><i class='bx bx-rocket'></i></div>
-                    <h3>Mini Projects</h3>
-                    <ul class="skill-list">
-                        <li>Chatbot</li>
-                        <li>Guess The Number</li>
-                        <li>Todo List</li>
-                        <li>Notepad</li>
-                        <li>Expense Tracker</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="card-icon"><i class='bx bx-cog'></i></div>
-                    <h3>Technical Tools</h3>
-                    <ul class="skill-list">
-                        <li>Git-GitHub</li>
-                        <li>Visual Studio code</li>
-                        <li>Mangodb compass</li>
-                        <li>N8N</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="card-icon"><i class='bx bx-folder'></i></div>
-                    <h3>Project</h3>
-                    <ul class="skill-list">
-                        <li>Resume-Ranker</li>
-                        <li>Human Emotion Recognition System</li>
-                        <li>Online Compiler</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <section class="projects" id="projects">
-            <div class="section-header">
-                <h2>Featured <span>Projects</span></h2>
-                <div class="accent-line"></div>
-            </div>
-            
-            <div class="slider-container">
-                <button class="slider-btn prev" aria-label="Previous project"><i class='bx bx-chevron-left'></i></button>
-                <div class="slider">
-                    <div class="slides">
-                        <div class="slide-card">
-                            <div class="card-img">
-                                <img src="images/image2.png" alt="Resume Ranker" loading="lazy" decoding="async">
-                                <div class="card-overlay">
-                                    <div class="project-tags">
-                                        <span>AI</span>
-                                        <span>NLP</span>
-                                        <span>Python</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <h3>Resume-Ranker</h3>
-                                <p>An AI-powered system that analyzes and ranks resumes based on job descriptions using advanced Natural Language Processing.</p>
-                                <div class="card-footer">
-                                    <a href="#" class="view-link">Live Demo</a>
-                                    <a href="https://github.com/HarishC-71/Resume-Ranker.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide-card">
-                            <div class="card-img">
-                                <picture>
-                                    <source srcset="images/Emotion_Recognition.webp" type="image/webp">
-                                    <img src="images/Emotion_Recognition.jpg" alt="Human Emotion Recognition System" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='images/Emotion-AI-picture-2-copy.webp';">
-                                </picture>
-                                <div class="card-overlay">
-                                    <div class="project-tags">
-                                        <span>AI</span>
-                                        <span>Machine Learning</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <h3>Human Emotion Recognition System</h3>
-                                <p>A system that uses machine learning to identify and analyze human emotions from facial expressions and other biometric data.</p>
-                                <div class="card-footer">
-                                    <a href="#" class="view-link">Live Demo</a>
-                                    <a href="https://github.com/HarishC-71/FACE_DETECTION.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="slide-card">
-                            <div class="card-img">
-                                <img src="images/prototype.jpg" alt="Mini Projects Prototype" loading="lazy" decoding="async">
-                                <div class="card-overlay">
-                                    <div class="project-tags">
-                                        <span>Prototype</span>
-                                        <span>Mern</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <h3>Mini Projects</h3>
-                                <p>Explore a collection of small-scale projects that demonstrate various technologies and concepts.</p>
-                                <div class="card-footer">
-                                    <a href="https://prototype-wruw.vercel.app" class="view-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                                    <a href="https://github.com/HarishC-71/prototype.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slide-card">
-                            <div class="card-img">
-                                <img src="images/compiler.png" alt="Online Compiler" loading="lazy" decoding="async">
-                                <div class="card-overlay">
-                                    <div class="project-tags">
-                                        <span>Mern</span>
-                                        <span>JS</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <h3>Online Compiler</h3>
-                                <p>A full-stack web application that allows users to write, compile, and run code directly in their browser, supporting multiple programming languages.</p>
-                                <div class="card-footer">
-                                    <a href="#" class="view-link">Live Demo</a>
-                                    <a href="https://github.com/HarishC-71/compiler.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <button class="slider-btn next" aria-label="Next project"><i class='bx bx-chevron-right'></i></button>
-            </div>
-            <div class="slider-dots"></div>
-        </section>
-        <section class="contact" id="contact">
-            <div class="section-header">
-                <h2>Get in <span>Touch</span></h2>
-                <div class="accent-line"></div>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's talk about everything!</h3>
-                    <p>Feel free to reach out for collaborations, project inquiries, or just to say hi.</p>
-                    <div class="info-item">
-                        <i class='bx bx-envelope'></i>
-                        <span>harishcc2007@gmail.com</span>
-                    </div>
-                    <div class="info-item">
-                        <i class='bx bx-map'></i>
-                        <span>AI & Data Science Hub</span>
-                    </div>
-                </div>
-                <form id="contactForm" class="contact-form">
-                    <div class="input-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                        <input type="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="subject" placeholder="Subject" required>
-                    </div>
-                    <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
-                    <button type="submit" class="btn primary-btn submit-btn">Send Message <i
-                            class='bx bxs-send'></i></button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Harishraj. All Rights Reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Harishraj - Portfolio</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="alternate icon" type="image/png" href="favicon.png">
+
+    <meta name="description" content="Harishraj - AI and Data Science Student Portfolio">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+    <div id="scroll-progress" class="scroll-progress-bar"></div>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+
+    <div class="cursor-outline" data-cursor-outline></div>
+
+
+
+    <header class="header">
+
+        <a href="#home" class="logo">H<span>.</span></a>
+
+        <nav class="navbar">
+
+            <ul class="nav-links">
+
+                <li><a href="#home" class="active">Home</a></li>
+
+                <li><a href="#about">About</a></li>
+
+                <li><a href="#skills">Skills</a></li>
+
+                <li><a href="#projects">Projects</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+        <div class="theme-toggle" title="Toggle Light / Dark Mode">
+
+            <label class="theme-toggle-label" aria-label="Toggle light/dark mode">
+
+                <input type="checkbox" id="themeToggleInput">
+
+                <div class="theme-toggle-track"></div>
+
+                <div class="theme-toggle-thumb">
+
+                    <span class="theme-icon-dark">🌙</span>
+
+                    <span class="theme-icon-light">☀️</span>
+
+                </div>
+
+            </label>
+
+        </div>
+
+        <div class="menu-toggle"><i class='bx bx-menu'></i></div>
+
+    </header>
+
+
+
+    <main>
+
+        <section class="home" id="home">
+
+            <div class="home-content">
+
+                <span class="greeting">Hello, I'm</span>
+
+                <h1 class="name">Harishraj</h1>
+
+                <h2 class="role"><span class="typed-text"></span><span class="cursor-blink">&nbsp;</span></h2>
+
+                <p class="description">
+
+                    Passionate about Artificial Intelligence, Machine Learning, and innovative development.
+
+                    I enjoy learning new technologies and building real-world projects that make an impact.
+
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="https://leetcode.com/u/HARISHRAJ_C/" aria-label="LeetCode" title="LeetCode" target="_blank" rel="noopener noreferrer"><i
+
+                            class='bx bx-code-alt'></i></a>
+
+                    <a href="https://www.linkedin.com/in/harishraj-c-202b69338/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i
+
+                            class='bx bxl-linkedin'></i></a>
+
+                    <a href="https://github.com/HarishC-71" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener noreferrer"><i
+
+                            class='bx bxl-github'></i></a>
+
+                    <a href="https://www.salesforce.com/trailblazer/srq9q2l04p5mxcis7q" aria-label="Salesforce" title="Salesforce" target="_blank" rel="noopener noreferrer"><i
+
+                         class="bx bx-cloud" ></i></a>
+
+                </div>
+
+                <div class="cta-group">
+
+                    <a href="HARISHRAJ_C.pdf" class="btn primary-btn" target="_blank" rel="noopener noreferrer" download="Harishraj_C_Resume.pdf">Download Resume</a>
+
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+
+                </div>
+
+            </div>
+
+            <div class="home-image">
+
+                <div class="image-wrapper">
+
+                    <picture>
+
+                        <source srcset="images/me.jpeg" type="image/webp">
+
+                        <img src="images/me.jpeg" alt="Harishraj Profile Picture" fetchpriority="high" decoding="async">
+
+                    </picture>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="about" id="about">
+
+            <div class="section-header">
+
+                <h2>About <span>Me</span></h2>
+
+                <div class="accent-line"></div>
+
+            </div>
+
+            <div class="about-container">
+
+                <div class="about-image">
+
+                    <div class="image-wrapper-alt">
+
+                        <picture>
+
+                            <source srcset="images/me.jpeg" type="image/webp">
+
+                            <img src="images/me.jpeg" alt="Harishraj Profile Picture" loading="lazy" decoding="async">
+
+                        </picture>
+
+                    </div>
+
+                </div>
+
+                <div class="about-text">
+
+                    <h3>Exploring data, creating intelligence.</h3>
+
+                    <p>I’m Harishraj, an AI and Data Science student with a strong interest in machine learning, data
+
+                        analysis, and building impactful real-world projects. I naturally gravitate towards exploring
+
+                        new technologies, solving complex problems, and continuously refining my skill set.</p>
+
+                    <p>I thrive on learning new concepts and turning experimental ideas into practical applications.
+
+                        Whether it’s analyzing intricate data patterns, training predictive models, or developing
+
+                        intuitive software, I bring passion and curiosity to everything I build.</p>
+
+                    <p>My ultimate goal is to evolve into a proficient AI engineer capable of architecting smart,
+
+                        efficient solutions that drive meaningful change.</p>
+
+                    <div class="stats">
+
+                        <div class="stat-item">
+
+                            <h4>4+</h4>
+
+                            <p>Mini Projects</p>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <h4>6+</h4>
+
+                            <p>Tech Skills</p>
+
+                        </div>
+
+                        <div class="stat-item">
+
+                            <h4>3+</h4>
+
+                            <p>Main Projects</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="skills" id="skills">
+
+            <div class="section-header">
+
+                <h2>Technical <span>Skills</span></h2>
+
+                <div class="accent-line"></div>
+
+            </div>
+
+            <div class="skills-container">
+
+                <div class="skill-card">
+
+                    <div class="card-icon"><i class='bx bx-code-alt'></i></div>
+
+                    <h3>Languages</h3>
+
+                    <ul class="skill-list">
+
+                        <li>Python</li>
+
+                        <li>Java</li>
+
+                        <li>C,C++</li>
+
+                        <li>JavaScript</li>
+
+                        <li>MERN STACK</li>
+
+                        <li>DSA(JAVA)</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <div class="card-icon"><i class='bx bx-message-square-dots'></i></div>
+
+                    <h3>Soft Skills</h3>
+
+                    <ul class="skill-list">
+
+                        <li>Communication</li>
+
+                        <li>Teamwork</li>
+
+                        <li>Leadership</li>
+
+                        <li>Problem Solving</li>
+
+                        <li>Logical Thinking</li>
+
+                        <li>Prompt Engineering</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <div class="card-icon"><i class='bx bx-rocket'></i></div>
+
+                    <h3>Mini Projects</h3>
+
+                    <ul class="skill-list">
+
+                        <li>Chatbot</li>
+
+                        <li>Guess The Number</li>
+
+                        <li>Todo List</li>
+
+                        <li>Notepad</li>
+
+                        <li>Expense Tracker</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <div class="card-icon"><i class='bx bx-cog'></i></div>
+
+                    <h3>Technical Tools</h3>
+
+                    <ul class="skill-list">
+
+                        <li>Git-GitHub</li>
+
+                        <li>Visual Studio code</li>
+
+                        <li>Mangodb compass</li>
+
+                        <li>N8N</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="skill-card">
+
+                    <div class="card-icon"><i class='bx bx-folder'></i></div>
+
+                    <h3>Project</h3>
+
+                    <ul class="skill-list">
+
+                        <li>Resume-Ranker</li>
+
+                        <li>Human Emotion Recognition System</li>
+
+                        <li>Online Compiler</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="projects" id="projects">
+
+            <div class="section-header">
+
+                <h2>Featured <span>Projects</span></h2>
+
+                <div class="accent-line"></div>
+
+            </div>
+
+            
+
+            <div class="slider-container">
+
+                <button class="slider-btn prev" aria-label="Previous project"><i class='bx bx-chevron-left'></i></button>
+
+                <div class="slider">
+
+                    <div class="slides">
+
+                        <div class="slide-card">
+
+                            <div class="card-img">
+
+                                <img src="images/image2.png" alt="Resume Ranker" loading="lazy" decoding="async">
+
+                                <div class="card-overlay">
+
+                                    <div class="project-tags">
+
+                                        <span>AI</span>
+
+                                        <span>NLP</span>
+
+                                        <span>Python</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-content">
+
+                                <h3>Resume-Ranker</h3>
+
+                                <p>An AI-powered system that analyzes and ranks resumes based on job descriptions using advanced Natural Language Processing.</p>
+
+                                <div class="card-footer">
+
+                                    <a href="https://resume-ranker-topaz.vercel.app/" class="view-link">Live Demo</a>
+
+                                    <a href="https://github.com/HarishC-71/Resume-Ranker.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="slide-card">
+
+                            <div class="card-img">
+
+                                <picture>
+
+                                    <source srcset="images/Emotion_Recognition.webp" type="image/webp">
+
+                                    <img src="images/Emotion_Recognition.jpg" alt="Human Emotion Recognition System" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='images/Emotion-AI-picture-2-copy.webp';">
+
+                                </picture>
+
+                                <div class="card-overlay">
+
+                                    <div class="project-tags">
+
+                                        <span>AI</span>
+
+                                        <span>Machine Learning</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-content">
+
+                                <h3>Human Emotion Recognition System</h3>
+
+                                <p>A system that uses machine learning to identify and analyze human emotions from facial expressions and other biometric data.</p>
+
+                                <div class="card-footer">
+
+                                    <a href="#" class="view-link">Live Demo</a>
+
+                                    <a href="https://github.com/HarishC-71/FACE_DETECTION.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        
+
+                        <div class="slide-card">
+
+                            <div class="card-img">
+
+                                <img src="images/prototype.jpg" alt="Mini Projects Prototype" loading="lazy" decoding="async">
+
+                                <div class="card-overlay">
+
+                                    <div class="project-tags">
+
+                                        <span>Prototype</span>
+
+                                        <span>Mern</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-content">
+
+                                <h3>Mini Projects</h3>
+
+                                <p>Explore a collection of small-scale projects that demonstrate various technologies and concepts.</p>
+
+                                <div class="card-footer">
+
+                                    <a href="https://prototype-wruw.vercel.app" class="view-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+
+                                    <a href="https://github.com/HarishC-71/prototype.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="slide-card">
+
+                            <div class="card-img">
+
+                                <img src="images/compiler.png" alt="Online Compiler" loading="lazy" decoding="async">
+
+                                <div class="card-overlay">
+
+                                    <div class="project-tags">
+
+                                        <span>Mern</span>
+
+                                        <span>JS</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card-content">
+
+                                <h3>Online Compiler</h3>
+
+                                <p>A full-stack web application that allows users to write, compile, and run code directly in their browser, supporting multiple programming languages.</p>
+
+                                <div class="card-footer">
+
+                                    <a href="#" class="view-link">Live Demo</a>
+
+                                    <a href="https://github.com/HarishC-71/compiler.git" class="github-link" title="Source Code" target="_blank" rel="noopener noreferrer"><i class='bx bxl-github'></i></a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <button class="slider-btn next" aria-label="Next project"><i class='bx bx-chevron-right'></i></button>
+
+            </div>
+
+            <div class="slider-dots"></div>
+
+        </section>
+
+        <section class="contact" id="contact">
+
+            <div class="section-header">
+
+                <h2>Get in <span>Touch</span></h2>
+
+                <div class="accent-line"></div>
+
+            </div>
+
+            <div class="contact-container">
+
+                <div class="contact-info">
+
+                    <h3>Let's talk about everything!</h3>
+
+                    <p>Feel free to reach out for collaborations, project inquiries, or just to say hi.</p>
+
+                    <div class="info-item">
+
+                        <i class='bx bx-envelope'></i>
+
+                        <span>harishcc2007@gmail.com</span>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <i class='bx bx-map'></i>
+
+                        <span>AI & Data Science Hub</span>
+
+                    </div>
+
+                </div>
+
+                <form id="contactForm" class="contact-form">
+
+                    <div class="input-group">
+
+                        <input type="text" id="name" placeholder="Your Name" required>
+
+                        <input type="email" id="email" placeholder="Your Email" required>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="text" id="subject" placeholder="Subject" required>
+
+                    </div>
+
+                    <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
+
+                    <button type="submit" class="btn primary-btn submit-btn">Send Message <i
+
+                            class='bx bxs-send'></i></button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <footer>
+
+        <p>&copy; 2026 Harishraj. All Rights Reserved.</p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+
+
 </html>
